@@ -1,0 +1,4 @@
+print("hello, this is my first ai project !")
+
+name = input("enter your name: ")
+print(f"wellcome {name}, let's build something awesome with ai!")
