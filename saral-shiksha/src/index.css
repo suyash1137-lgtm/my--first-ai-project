@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── SARAL SHIKSHA Global Styles ─── */
+
+/* Accessibility: high-contrast mode */
+.high-contrast {
+  filter: contrast(1.5);
+}
+
+/* Accessibility: reduced-motion */
+.reduced-motion * {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Accessibility: font sizes */
+.font-normal-size  { font-size: 1rem;    }
+.font-large-size   { font-size: 1.25rem; }

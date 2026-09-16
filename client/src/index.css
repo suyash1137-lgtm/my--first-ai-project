@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Saral Shiksha — Global Accessibility Styles
+   WCAG 2.1 AA Compliant
+   ============================================ */
+
+/* ── Custom font for dyslexia-friendly mode ── */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://fonts.cdnfonts.com/s/20780/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: normal;
+}
+
+/* ── Base resets ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-gray-900 bg-white;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Skip link (WCAG 2.4.1 Bypass Blocks) ── */
+.skip-link:focus {
+  top: 0 !important;
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+}
+
+/* ── Visible focus styles (WCAG 2.4.7) ── */
+:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* ── Font size variants ── */
+[data-font-size="large"] {
+  font-size: 112%;
+}
+[data-font-size="large"] h1 { font-size: 2.5rem; }
+[data-font-size="large"] h2 { font-size: 2rem; }
+[data-font-size="large"] p, [data-font-size="large"] li { font-size: 1.15rem; }
+
+[data-font-size="xlarge"] {
+  font-size: 130%;
+}
+[data-font-size="xlarge"] h1 { font-size: 3rem; }
+[data-font-size="xlarge"] h2 { font-size: 2.4rem; }
+[data-font-size="xlarge"] p, [data-font-size="xlarge"] li { font-size: 1.35rem; }
+
+/* ── High Contrast Mode (WCAG 1.4.3 — 4.5:1 minimum ratio) ── */
+[data-contrast="high-contrast"] {
+  background-color: #0a0a0a !important;
+  color: #facc15 !important;
+}
+[data-contrast="high-contrast"] .bg-white,
+[data-contrast="high-contrast"] .bg-gray-50,
+[data-contrast="high-contrast"] .bg-gray-100 {
+  background-color: #1a1a1a !important;
+}
+[data-contrast="high-contrast"] .text-gray-600,
+[data-contrast="high-contrast"] .text-gray-500,
+[data-contrast="high-contrast"] .text-gray-700 {
+  color: #fcd34d !important;
+}
+[data-contrast="high-contrast"] .text-gray-900 {
+  color: #facc15 !important;
+}
+[data-contrast="high-contrast"] .border-gray-200,
+[data-contrast="high-contrast"] .border-gray-300 {
+  border-color: #facc15 !important;
+}
+[data-contrast="high-contrast"] .bg-indigo-600,
+[data-contrast="high-contrast"] .bg-indigo-500 {
+  background-color: #22d3ee !important;
+  color: #000 !important;
+}
+[data-contrast="high-contrast"] a {
+  color: #22d3ee !important;
+}
+[data-contrast="high-contrast"] button {
+  border: 2px solid #facc15;
+}
+[data-contrast="high-contrast"] :focus-visible {
+  outline: 3px solid #22d3ee !important;
+}
+[data-contrast="high-contrast"] .progress-bar-fill {
+  background-color: #22d3ee !important;
+}
+
+/* ── Dyslexia-Friendly Mode ── */
+[data-contrast="dyslexia-friendly"] {
+  background-color: #fdf6e3 !important;
+  color: #1c1917 !important;
+  font-family: 'OpenDyslexic', 'Comic Sans MS', cursive !important;
+  letter-spacing: 0.05em;
+  word-spacing: 0.15em;
+  line-height: 1.9;
+}
+[data-contrast="dyslexia-friendly"] .bg-white,
+[data-contrast="dyslexia-friendly"] .bg-gray-50,
+[data-contrast="dyslexia-friendly"] .bg-gray-100 {
+  background-color: #f5ead1 !important;
+}
+[data-contrast="dyslexia-friendly"] p,
+[data-contrast="dyslexia-friendly"] li,
+[data-contrast="dyslexia-friendly"] span {
+  line-height: 2 !important;
+}
+
+/* ── Dark Mode ── */
+[data-contrast="dark"] {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+}
+[data-contrast="dark"] .bg-white,
+[data-contrast="dark"] .bg-gray-50 {
+  background-color: #1f2937 !important;
+}
+[data-contrast="dark"] .bg-gray-100 {
+  background-color: #374151 !important;
+}
+[data-contrast="dark"] .text-gray-600,
+[data-contrast="dark"] .text-gray-700 {
+  color: #d1d5db !important;
+}
+[data-contrast="dark"] .text-gray-900 {
+  color: #f9fafb !important;
+}
+[data-contrast="dark"] .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+/* ── Live Captions Box ── */
+.captions-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  padding: 14px 24px;
+  text-align: center;
+  border-top: 3px solid #facc15;
+  min-height: 60px;
+}
+[data-contrast="high-contrast"] .captions-box {
+  background: #000 !important;
+  color: #facc15 !important;
+  border-top-color: #22d3ee !important;
+}
+
+/* ── Sentence highlighting during TTS ── */
+.sentence-highlight {
+  background-color: #fef08a;
+  border-radius: 4px;
+  padding: 0 3px;
+  transition: background-color 0.2s ease;
+}
+[data-contrast="high-contrast"] .sentence-highlight {
+  background-color: #22d3ee !important;
+  color: #000 !important;
+}
+[data-contrast="dyslexia-friendly"] .sentence-highlight {
+  background-color: #fde68a !important;
+}
+
+/* ── Progress bar ── */
+.progress-bar-track {
+  @apply w-full bg-gray-200 rounded-full overflow-hidden;
+  height: 8px;
+}
+.progress-bar-fill {
+  @apply bg-indigo-600 rounded-full;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* ── Focus Mode (single-paragraph view) ── */
+.focus-mode-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Risk badge colors ── */
+.risk-high { @apply bg-red-100 text-red-700 border border-red-300; }
+.risk-medium { @apply bg-amber-100 text-amber-700 border border-amber-300; }
+.risk-low { @apply bg-green-100 text-green-700 border border-green-300; }
+[data-contrast="high-contrast"] .risk-high { background: #7f1d1d !important; color: #fca5a5 !important; border-color: #fca5a5 !important; }
+[data-contrast="high-contrast"] .risk-medium { background: #78350f !important; color: #fcd34d !important; border-color: #fcd34d !important; }
+[data-contrast="high-contrast"] .risk-low { background: #14532d !important; color: #86efac !important; border-color: #86efac !important; }
+
+/* ── Card ── */
+.card {
+  @apply bg-white border border-gray-200 rounded-xl shadow-sm;
+}
+[data-contrast="dark"] .card {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+[data-contrast="high-contrast"] .card {
+  background-color: #1a1a1a !important;
+  border-color: #facc15 !important;
+}
+[data-contrast="dyslexia-friendly"] .card {
+  background-color: #f5ead1 !important;
+  border-color: #92400e !important;
+}
+
+/* ── Smooth transitions ── */
+.transition-theme {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
